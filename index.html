@@ -420,6 +420,50 @@
             box-shadow: 0 5px 20px rgba(255, 51, 102, 0.5);
         }
 
+        .risk-badge {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 18px;
+    padding: 6px 18px;
+    border-radius: 999px;
+    font-size: 0.9em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.risk-badge.bajo {
+    background: rgba(82, 183, 136, 0.18);
+    border-color: rgba(82, 183, 136, 0.6);
+    color: #b9fcca;
+}
+
+.risk-badge.moderado {
+    background: rgba(255, 183, 3, 0.18);
+    border-color: rgba(255, 183, 3, 0.7);
+    color: #ffe29a;
+}
+
+.risk-badge.alto {
+    background: rgba(230, 57, 70, 0.2);
+    border-color: rgba(230, 57, 70, 0.8);
+    color: #ffb3c1;
+}
+
+.cta-lead {
+    font-size: 1em;
+    color: #a8dadc;
+    margin-bottom: 14px;
+}
+
+.cta-hint {
+    font-size: 0.85em;
+    color: #a8dadc;
+    margin: 10px 0 18px;
+}
+        
         /* PAYMENT SECTION (PDF OFFER) */
 .payment-section {
     display: none;
@@ -721,17 +765,32 @@
 
     <div class="score" id="scoreDisplay">-- puntos</div>
 
-    <div class="score-details" id="scoreDetails"></div>
+    <!-- NUEVO: badge llamativo del nivel de riesgo -->
+    <div class="risk-badge" id="riskBadge">
+        Riesgo moderado
+    </div>
 
-    <p>
-        Tu puntaje muestra un nivel de riesgo que requiere una explicación más profunda
-        para comprender realmente lo que significa en tu caso personal.
+    <!-- NUEVO: texto que empuja al botón -->
+    <p class="cta-lead">
+        Tu resultado ya está listo. Haz clic en el botón para ver el análisis
+        completo en PDF según tu puntuación.
+    </p>
+
+    <!-- Botón más arriba, bien protagonista -->
+    <a href="#" id="hotmartCheckoutLink">
+        <button class="cta-payment">
+           QUIERO VER MI INFORME PDF
+        </button>
+    </a>
+
+    <p class="cta-hint">
+        🔒 Acceso inmediato y seguro tras el pago.
     </p>
 
     <p>
-        En tu <strong>informe PDF completo</strong> encontrarás un análisis claro y detallado
-        sobre tu resultado, cómo interpretarlo y qué implicaciones emocionales y relacionales
-        puede tener.
+        En tu <strong>informe PDF completo</strong> encontrarás un análisis claro
+        y detallado sobre tu resultado, cómo interpretarlo y qué implicaciones
+        emocionales y relacionales puede tener.
     </p>
 
     <div class="unlock-benefits">
@@ -749,12 +808,6 @@
     <p>
         Serás redirigida/o a una página segura para acceder a tu análisis completo.
     </p>
-
-    <a href="#" id="hotmartCheckoutLink">
-        <button class="cta-payment">
-            QUIERO VER MI INFORME PDF
-        </button>
-    </a>
 </div>
 
     <!-- ============================================ -->
@@ -974,17 +1027,35 @@
             const maximo = preguntas.length * 5; // 50
 
 let categoria = "";
+let nivel = ""; // para el color del badge
 
 if (puntuacionTotal <= 20) {
     categoria = "Riesgo bajo";
+    nivel = "bajo";
 } else if (puntuacionTotal <= 35) {
     categoria = "Riesgo moderado";
+    nivel = "moderado";
 } else {
     categoria = "Riesgo alto";
+    nivel = "alto";
 }
 
-document.getElementById("scoreDetails").innerHTML =
-    `<strong>${categoria}</strong>`;
+// Actualizamos el badge vistoso
+const riskBadge = document.getElementById("riskBadge");
+if (riskBadge) {
+    riskBadge.textContent = categoria;
+    riskBadge.classList.remove("bajo", "moderado", "alto");
+    if (nivel) {
+        riskBadge.classList.add(nivel);
+    }
+}
+
+// Ya no usamos scoreDetails para mostrar texto (lo dejamos vacío o sin uso)
+const scoreDetails = document.getElementById("scoreDetails");
+if (scoreDetails) {
+    scoreDetails.innerHTML = "";
+}
+
 
 
             localStorage.setItem("testScore", puntuacionTotal);
@@ -1001,6 +1072,7 @@ document.getElementById("scoreDetails").innerHTML =
     </script>
 </body>
 </html>
+
 
 
 
