@@ -693,47 +693,48 @@
     <!-- PAYMENT SECTION -->
     <!-- ============================================ -->
     <div class="payment-section" id="paymentSection">
-        <div class="payment-card">
-            <div class="icon-success">✓</div>
-            <h2>¡Test completado!</h2>
-            <div class="score" id="scoreDisplay">-- puntos</div>
-            <div class="score-details" id="scoreDetails"></div>
+<div class="payment-card">
+    <div class="icon-success">✓</div>
 
-            <p>
-                Has respondido todas las preguntas del test. Tu resultado se ha
-                calculado con base en tu puntuación total y en indicadores
-                frecuentes en relaciones con rasgos narcisistas.
-            </p>
+    <h2>¡Test completado!</h2>
 
-            <p>
-                Para profundizar en tu caso, tendrás acceso a un
-                <strong>PDF completo</strong> donde encontrarás:
-            </p>
+    <div class="score" id="scoreDisplay">-- puntos</div>
 
-            <div class="unlock-benefits">
-                <h3>🔓 Dentro del PDF encontrarás:</h3>
-                <ul>
-                    <li>Explicación clara de lo que significa tu resultado.</li>
-                    <li>Contexto sobre abuso narcisista y dinámicas de pareja.</li>
-                    <li>Señales clave que suelen aparecer en relaciones con rasgos narcisistas.</li>
-                    <li>Recomendaciones prácticas para tu proceso de recuperación emocional.</li>
-                    <li>Ideas para poner límites sanos y protegerte en el futuro.</li>
-                    <li>Recursos y referencias para seguir aprendiendo sobre el tema.</li>
-                </ul>
-            </div>
+    <div class="score-details" id="scoreDetails"></div>
 
-            <p>
-                Serás redireccionada/o a una página segura para obtener tus resultados explicados.
-            </p>
+    <p>
+        Tu puntaje muestra un nivel de riesgo que requiere una explicación más profunda
+        para comprender realmente lo que significa en tu caso personal.
+    </p>
 
-            <!-- ⚠️ Reemplaza con tu enlace real de Hotmart -->
-            <a href="#" id="hotmartCheckoutLink">
-                <button class="cta-payment">
-                    VER MI ANÁLISIS EN PDF
-                </button>
-            </a>
-        </div>
+    <p>
+        En tu <strong>informe PDF completo</strong> encontrarás un análisis claro y detallado
+        sobre tu resultado, cómo interpretarlo y qué implicaciones emocionales y relacionales
+        puede tener.
+    </p>
+
+    <div class="unlock-benefits">
+        <h3>🔓 Dentro del PDF encontrarás:</h3>
+        <ul>
+            <li>Una lectura personalizada de tu resultado.</li>
+            <li>Explicación amplia de si hay patrones narcisistas.</li>
+            <li>Qué significa cada parte del puntaje en tu contexto.</li>
+            <li>Indicadores clave presentes en tu historia.</li>
+            <li>Orientación emocional para comprender lo vivido.</li>
+            <li>Recomendaciones prácticas para tu bienestar.</li>
+        </ul>
     </div>
+
+    <p>
+        Serás redirigida/o a una página segura para acceder a tu análisis completo.
+    </p>
+
+    <a href="#" id="hotmartCheckoutLink">
+        <button class="cta-payment">
+            VER MI INFORME EN PDF
+        </button>
+    </a>
+</div>
 
     <!-- ============================================ -->
     <!-- DISCLAIMER -->
@@ -951,22 +952,19 @@
             const puntuacionTotal = respuestas.reduce((sum, val) => sum + val, 0);
             const maximo = preguntas.length * 5; // 50
 
-            let categoria = "";
-            let explicacion = "";
+let categoria = "";
 
-            if (puntuacionTotal <= 20) {
-                categoria = "Riesgo bajo de dinámicas típicas de abuso narcisista.";
-                explicacion =
-                    "Tu resultado sugiere que, aunque puede haber habido momentos difíciles o conductas puntuales, no se observa un patrón constante típico de abuso narcisista. Aun así, tus emociones y tu experiencia son importantes y merecen ser escuchadas.";
-            } else if (puntuacionTotal <= 35) {
-                categoria = "Riesgo moderado de dinámicas de abuso narcisista.";
-                explicacion =
-                    "Tu resultado indica que hay varias señales de manipulación emocional o dinámicas poco sanas que podrían estar afectando tu bienestar. Profundizar en estas experiencias puede ayudarte a ponerles nombre y a tomar decisiones más conscientes.";
-            } else {
-                categoria = "Riesgo alto de dinámicas compatibles con abuso narcisista.";
-                explicacion =
-                    "Tu resultado muestra un patrón fuerte de comportamientos que suelen aparecer en relaciones con abuso narcisista. Es importante validar lo que has vivido, entenderlo con claridad y considerar apoyo emocional especializado.";
-            }
+if (puntuacionTotal <= 20) {
+    categoria = "Riesgo bajo";
+} else if (puntuacionTotal <= 35) {
+    categoria = "Riesgo moderado";
+} else {
+    categoria = "Riesgo alto";
+}
+
+document.getElementById("scoreDetails").innerHTML =
+    `<strong>${categoria}</strong>`;
+
 
             localStorage.setItem("testScore", puntuacionTotal);
             localStorage.setItem("testAnswers", JSON.stringify(respuestas));
@@ -982,3 +980,4 @@
     </script>
 </body>
 </html>
+
