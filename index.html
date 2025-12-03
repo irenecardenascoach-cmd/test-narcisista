@@ -420,48 +420,133 @@
             box-shadow: 0 5px 20px rgba(255, 51, 102, 0.5);
         }
 
-        .risk-badge {
-    display: inline-block;
-    margin-top: 5px;
-    margin-bottom: 18px;
-    padding: 6px 18px;
-    border-radius: 999px;
-    font-size: 0.9em;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+        /* GRÁFICO BORROSO */
+.result-preview {
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 51, 102, 0.3);
+    border-radius: 15px;
+    padding: 30px 20px;
+    margin: 25px 0 30px;
+    position: relative;
+    overflow: hidden;
 }
 
-.risk-badge.bajo {
-    background: rgba(82, 183, 136, 0.18);
-    border-color: rgba(82, 183, 136, 0.6);
-    color: #b9fcca;
+.result-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(26, 26, 46, 0.6) 30%,
+        rgba(26, 26, 46, 0.95) 100%
+    );
+    backdrop-filter: blur(12px);
+    z-index: 1;
 }
 
-.risk-badge.moderado {
-    background: rgba(255, 183, 3, 0.18);
-    border-color: rgba(255, 183, 3, 0.7);
-    color: #ffe29a;
+.result-preview-content {
+    position: relative;
+    filter: blur(5px);
+    opacity: 0.35;
+    pointer-events: none;
 }
 
-.risk-badge.alto {
-    background: rgba(230, 57, 70, 0.2);
-    border-color: rgba(230, 57, 70, 0.8);
-    color: #ffb3c1;
+.chart-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 12px;
+    height: 140px;
+    margin: 20px 0;
+}
+
+.chart-bar {
+    width: 45px;
+    background: linear-gradient(180deg, #ff3366, #cc0044);
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.4);
+}
+
+.chart-bar:nth-child(1) { height: 45%; animation: barGrow 1s ease-out 0.1s both; }
+.chart-bar:nth-child(2) { height: 75%; animation: barGrow 1s ease-out 0.2s both; }
+.chart-bar:nth-child(3) { height: 90%; animation: barGrow 1s ease-out 0.3s both; }
+.chart-bar:nth-child(4) { height: 65%; animation: barGrow 1s ease-out 0.4s both; }
+.chart-bar:nth-child(5) { height: 55%; animation: barGrow 1s ease-out 0.5s both; }
+
+@keyframes barGrow {
+    from { height: 0; opacity: 0; }
+    to { opacity: 1; }
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+    font-size: 0.7em;
+    color: #a8dadc;
+}
+
+.chart-label {
+    width: 45px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.blur-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    width: 90%;
+}
+
+.blur-overlay .lock-icon {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    animation: lockPulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 51, 102, 0.6));
+}
+
+@keyframes lockPulse {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.15); opacity: 1; }
+}
+
+.blur-overlay h3 {
+    font-size: 1.4em;
+    color: #fff;
+    margin-bottom: 8px;
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.blur-overlay p {
+    font-size: 1em;
+    color: #ffb703;
+    font-weight: 600;
 }
 
 .cta-lead {
-    font-size: 1em;
-    color: #a8dadc;
-    margin-bottom: 14px;
+    font-size: 1.15em;
+    color: #fff;
+    margin: 20px 0 25px;
+    line-height: 1.6;
+    font-weight: 600;
 }
 
 .cta-hint {
-    font-size: 0.85em;
-    color: #a8dadc;
-    margin: 10px 0 18px;
+    font-size: 0.95em;
+    color: #52b788;
+    margin: 15px 0 5px;
+    font-weight: 700;
 }
         
         /* PAYMENT SECTION (PDF OFFER) */
@@ -506,12 +591,12 @@
             color: #fff;
         }
 
-        .payment-card .score {
-            font-size: 2.1em;
-            font-weight: 900;
-            color: #ffb703;
-            margin: 15px 0 10px;
-        }
+.payment-card .score {
+    font-size: 2.4em;
+    font-weight: 900;
+    color: #ffb703;
+    margin: 15px 0 25px;
+}
 
         .score-details {
             font-size: 1em;
@@ -527,66 +612,75 @@
             margin-bottom: 20px;
         }
 
-        .unlock-benefits {
-            background: rgba(255, 51, 102, 0.1);
-            border: 1px solid rgba(255, 51, 102, 0.3);
-            border-radius: 15px;
-            padding: 25px 20px;
-            margin: 20px 0 25px;
-            text-align: left;
-        }
+.unlock-benefits {
+    background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(255, 51, 102, 0.05));
+    border: 2px solid rgba(255, 51, 102, 0.4);
+    border-radius: 15px;
+    padding: 25px 20px;
+    margin: 25px 0;
+    text-align: left;
+}
 
-        .unlock-benefits h3 {
-            color: #ff3366;
-            margin-bottom: 12px;
-            font-size: 1.2em;
-        }
+.unlock-benefits h3 {
+    color: #ff3366;
+    margin-bottom: 18px;
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: 800;
+}
 
-        .unlock-benefits ul {
-            list-style: none;
-        }
+.unlock-benefits ul {
+    list-style: none;
+}
 
-        .unlock-benefits li {
-            padding: 8px 0;
-            padding-left: 26px;
-            position: relative;
-            color: #fff;
-            font-size: 0.98em;
-        }
+.unlock-benefits li {
+    padding: 10px 0;
+    padding-left: 32px;
+    position: relative;
+    color: #fff;
+    font-size: 1.02em;
+    line-height: 1.5;
+    font-weight: 500;
+}
 
-        .unlock-benefits li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #52b788;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
+.unlock-benefits li:before {
+    content: "🔥";
+    position: absolute;
+    left: 0;
+    font-size: 1.3em;
+}
 
-        .cta-payment {
-            background: #fff;
-            color: #ff3366;
-            padding: 18px 40px;
-            font-size: 1.2em;
-            font-weight: 900;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
-        }
+.unlock-benefits li strong {
+    color: #ffb703;
+}
 
-        .cta-payment:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 50px rgba(255, 255, 255, 0.5);
-        }
+.cta-payment {
+    background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+    color: #ff3366;
+    padding: 20px 40px;
+    font-size: 1.3em;
+    font-weight: 900;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
-        .payment-note {
-            margin-top: 12px;
-            font-size: 0.85em;
-            color: #a8dadc;
-        }
+.cta-payment:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 15px 50px rgba(255, 255, 255, 0.5);
+}
+
+.payment-note {
+    margin-top: 15px;
+    font-size: 0.85em;
+    color: #a8dadc;
+    line-height: 1.5;
+}
 
         /* DISCLAIMER */
         .disclaimer {
@@ -645,6 +739,19 @@
         text-align: center;
         margin-top: 30px;
         width: 90%;
+    }
+
+        .chart-bar {
+        width: 35px;
+    }
+
+    .chart-label {
+        width: 35px;
+        font-size: 0.65em;
+    }
+
+    .unlock-benefits li {
+        font-size: 0.95em;
     }
 }
     </style>
@@ -756,67 +863,79 @@
     <!-- ============================================ -->
     <!-- PAYMENT SECTION -->
     <!-- ============================================ -->
-    <div class="payment-section" id="paymentSection">
-<div class="payment-card">
-    <div class="icon-success">✓</div>
+   <div class="payment-section" id="paymentSection">
+    <div class="payment-card">
+        <div class="icon-success">✓</div>
 
-    <h2>¡Test completado!</h2>
+        <h2>¡Test completado!</h2>
 
-    <div class="score" id="scoreDisplay">-- puntos</div>
+        <div class="score" id="scoreDisplay">-- puntos</div>
 
-    <!-- NUEVO: badge llamativo del nivel de riesgo -->
-    <div class="risk-badge" id="riskBadge">
-        Riesgo moderado
+        <!-- GRÁFICO BORROSO -->
+        <div class="result-preview">
+            <div class="result-preview-content">
+                <div class="chart-container">
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                </div>
+                <div class="chart-labels">
+                    <div class="chart-label">Love Bombing</div>
+                    <div class="chart-label">Gas-lighting</div>
+                    <div class="chart-label">Control</div>
+                    <div class="chart-label">Aisla-miento</div>
+                    <div class="chart-label">Ciclos</div>
+                </div>
+            </div>
+            
+            <div class="blur-overlay">
+                <div class="lock-icon">🔒</div>
+                <h3>Tu análisis detallado está listo</h3>
+                <p>Desbloquéalo ahora por solo $3.99</p>
+            </div>
+        </div>
+
+        <p class="cta-lead">
+            Tu resultado completo te espera. Descubre exactamente qué significan tus respuestas y si estuviste con un narcisista.
+        </p>
+
+        <a href="#" id="hotmartCheckoutLink">
+            <button class="cta-payment">
+               🔓 Desbloquear mi informe completo
+            </button>
+        </a>
+
+        <p class="cta-hint">
+            ✅ Acceso inmediato • Solo $3.99 USD • 100% seguro
+        </p>
+
+        <div class="unlock-benefits">
+            <h3>🔥 Esto es lo que descubrirás en tu informe:</h3>
+            <ul>
+                <li><strong>¿Realmente fue un narcisista?</strong> La verdad detrás de sus comportamientos explicada con claridad</li>
+                <li><strong>Por qué no podías dejarlo:</strong> Los mecanismos psicológicos que te mantuvieron atrapada/o</li>
+                <li><strong>Las señales que ignoraste</strong> al principio y que ahora tienen sentido</li>
+                <li><strong>El daño real:</strong> Cómo el abuso narcisista afectó tu autoestima, identidad y salud mental</li>
+                <li><strong>¿Eres codependiente?</strong> Descubre si tus patrones de apego te hacen vulnerable</li>
+                <li><strong>Cómo sanar de verdad:</strong> Plan paso a paso para recuperarte emocionalmente</li>
+                <li><strong>Red flags para el futuro:</strong> Qué buscar (o evitar) en tu próxima relación</li>
+                <li><strong>Tus patrones específicos:</strong> Análisis personalizado según TUS respuestas exactas</li>
+            </ul>
+        </div>
+
+        <p class="payment-note">
+            Después del pago, recibirás tu informe PDF personalizado de inmediato. Inversión única de $3.99 USD. Garantía de satisfacción.
+        </p>
     </div>
 
-    <!-- NUEVO: texto que empuja al botón -->
-    <p class="cta-lead">
-        Tu resultado ya está listo. Haz clic en el botón para ver el análisis
-        completo en PDF según tu puntuación.
-    </p>
-
-    <!-- Botón más arriba, bien protagonista -->
-    <a href="#" id="hotmartCheckoutLink">
-        <button class="cta-payment">
-           QUIERO VER MI INFORME PDF
-        </button>
-    </a>
-
-    <p class="cta-hint">
-        🔒 Acceso inmediato y seguro.
-    </p>
-
-    <p>
-        En tu <strong>informe PDF completo</strong> encontrarás un análisis claro
-        y detallado sobre tu resultado, cómo interpretarlo y qué implicaciones
-        emocionales y relacionales puede tener.
-    </p>
-
-    <div class="unlock-benefits">
-        <h3>🔓 Dentro del PDF encontrarás:</h3>
-        <ul>
-            <li>Una lectura personalizada de tu resultado.</li>
-            <li>Explicación amplia de si hay patrones narcisistas.</li>
-            <li>Qué significa cada parte del puntaje en tu contexto.</li>
-            <li>Indicadores clave presentes en tu historia.</li>
-            <li>Orientación emocional para comprender lo vivido.</li>
-            <li>Recomendaciones prácticas para tu bienestar.</li>
-        </ul>
-    </div>
-
-    <p>
-        Serás redirigida/o a una página segura para acceder a tu análisis completo.
-    </p>
-</div>
-
-    <!-- ============================================ -->
-    <!-- DISCLAIMER -->
-    <!-- ============================================ -->
     <div class="disclaimer">
         Este test tiene fines orientativos y educativos y no reemplaza una
         evaluación profesional de salud mental. Si sientes que necesitas ayuda,
         considera buscar apoyo psicológico con un profesional acreditado.
     </div>
+</div>
 
     <script>
         /* HOTMART URL */
@@ -1021,56 +1140,24 @@
             }
         }
 
-        function finalizarTest() {
-            const puntuacionTotal = respuestas.reduce((sum, val) => sum + val, 0);
-            const maximo = preguntas.length * 5; // 50
+function finalizarTest() {
+    const puntuacionTotal = respuestas.reduce((sum, val) => sum + val, 0);
+    const maximo = preguntas.length * 5;
 
-let categoria = "";
-let nivel = ""; // para el color del badge
+    localStorage.setItem("testScore", puntuacionTotal);
+    localStorage.setItem("testAnswers", JSON.stringify(respuestas));
 
-if (puntuacionTotal <= 20) {
-    categoria = "Riesgo bajo";
-    nivel = "bajo";
-} else if (puntuacionTotal <= 35) {
-    categoria = "Riesgo moderado";
-    nivel = "moderado";
-} else {
-    categoria = "Riesgo alto";
-    nivel = "alto";
+    document.getElementById("testSection").style.display = "none";
+    document.getElementById("paymentSection").style.display = "flex";
+    document.getElementById("scoreDisplay").textContent =
+        `${puntuacionTotal} / ${maximo} puntos`;
+    
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
-
-// Actualizamos el badge vistoso
-const riskBadge = document.getElementById("riskBadge");
-if (riskBadge) {
-    riskBadge.textContent = categoria;
-    riskBadge.classList.remove("bajo", "moderado", "alto");
-    if (nivel) {
-        riskBadge.classList.add(nivel);
-    }
-}
-
-// Ya no usamos scoreDetails para mostrar texto (lo dejamos vacío o sin uso)
-const scoreDetails = document.getElementById("scoreDetails");
-if (scoreDetails) {
-    scoreDetails.innerHTML = "";
-}
-
-
-
-            localStorage.setItem("testScore", puntuacionTotal);
-            localStorage.setItem("testAnswers", JSON.stringify(respuestas));
-
-            document.getElementById("testSection").style.display = "none";
-            document.getElementById("paymentSection").style.display = "flex";
-            document.getElementById("scoreDisplay").textContent =
-                `${puntuacionTotal} puntos de ${maximo}`;
-            document.getElementById("scoreDetails").innerHTML =
-                `<strong>${categoria}</strong><br>${explicacion}`;
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }
     </script>
 </body>
 </html>
+
 
 
 
