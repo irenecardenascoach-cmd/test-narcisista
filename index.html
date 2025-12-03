@@ -7,7 +7,7 @@
 
     <meta
         name="description"
-        content="Test psicológico gratuito de 28 preguntas para identificar si tu relación, actual o pasada, tiene señales de abuso narcisista. Basado en investigación científica."
+        content="Test psicológico gratuito para identificar si tu relación, actual o pasada, muestra patrones típicos de abuso narcisista."
     />
 
     <style>
@@ -128,7 +128,7 @@
         .sub-headline {
             font-size: clamp(1rem, 2vw, 1.5rem);
             color: #a8dadc;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             line-height: 1.5;
             animation: slideUp 0.8s ease-out 0.2s both;
         }
@@ -144,6 +144,43 @@
             }
         }
 
+        .cta-primary {
+            display: inline-block;
+            background: linear-gradient(
+                135deg,
+                #ff3366 0%,
+                #cc0044 100%
+            );
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 10px 40px rgba(255, 51, 102, 0.4);
+            animation: bounce 2s ease-in-out infinite;
+            margin-top: 10px;
+            margin-bottom: 35px;
+        }
+
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .cta-primary:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 50px rgba(255, 51, 102, 0.6);
+        }
+
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(
@@ -151,7 +188,7 @@
                 minmax(200px, 1fr)
             );
             gap: 20px;
-            margin: 50px 0;
+            margin: 20px 0 50px;
             animation: fadeIn 1s ease-out 0.4s both;
         }
 
@@ -196,47 +233,11 @@
             line-height: 1.5;
         }
 
-        .cta-primary {
-            display: inline-block;
-            background: linear-gradient(
-                135deg,
-                #ff3366 0%,
-                #cc0044 100%
-            );
-            color: white;
-            padding: 18px 40px;
-            font-size: 1.2em;
-            font-weight: 700;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            box-shadow: 0 10px 40px rgba(255, 51, 102, 0.4);
-            animation: bounce 2s ease-in-out infinite;
-            margin-top: 30px;
-        }
-
-        @keyframes bounce {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .cta-primary:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 15px 50px rgba(255, 51, 102, 0.6);
-        }
-
         .trust-badges {
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 30px;
             flex-wrap: wrap;
         }
 
@@ -424,7 +425,6 @@
             display: none;
             min-height: 100vh;
             padding: 40px 20px 80px;
-            display: none;
             align-items: center;
             justify-content: center;
         }
@@ -462,10 +462,17 @@
         }
 
         .payment-card .score {
-            font-size: 2.4em;
+            font-size: 2.1em;
             font-weight: 900;
             color: #ffb703;
-            margin: 15px 0 20px;
+            margin: 15px 0 10px;
+        }
+
+        .score-details {
+            font-size: 1em;
+            color: #a8dadc;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         .payment-card p {
@@ -546,36 +553,36 @@
             text-align: center;
         }
 
-@media (max-width: 768px) {
-    .question-card,
-    .payment-card {
-        padding: 24px 16px;
-    }
+        @media (max-width: 768px) {
+            .question-card,
+            .payment-card {
+                padding: 24px 16px;
+            }
 
-    .cta-primary {
-        width: 100%;
-        padding: 16px 20px;
-        font-size: 1.05em;
-    }
+            .cta-primary {
+                width: 100%;
+                padding: 16px 20px;
+                font-size: 1.05em;
+            }
 
-    .nav-buttons {
-        flex-direction: column-reverse;
-        align-items: stretch;
-        gap: 10px;
-    }
+            .nav-buttons {
+                flex-direction: column-reverse;
+                align-items: stretch;
+                gap: 10px;
+            }
 
-    .btn-nav {
-        width: 100%;
-        text-align: center;
-    }
+            .btn-nav {
+                width: 100%;
+                text-align: center;
+            }
 
-    .question-text {
-        font-size: 1.1em;
-        line-height: 1.4;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-}
+            .question-text {
+                font-size: 1.1em;
+                line-height: 1.4;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+        }
     </style>
 </head>
 <body>
@@ -594,6 +601,11 @@
                 Descubre si tu relación, actual o pasada, muestra patrones típicos de abuso narcisista.
             </p>
 
+            <!-- Botón justo bajo el subtítulo -->
+            <button class="cta-primary" onclick="iniciarTest()">
+                COMENZAR TEST GRATUITO
+            </button>
+
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <div class="icon">🔬</div>
@@ -610,7 +622,7 @@
                 <div class="benefit-item">
                     <div class="icon">⚡</div>
                     <h3>Test rápido</h3>
-                    <p>Solo 5 minutos para completar las 28 preguntas tipo escala.</p>
+                    <p>Solo unos minutos para completar las preguntas tipo escala.</p>
                 </div>
 
                 <div class="benefit-item">
@@ -621,10 +633,6 @@
                     </p>
                 </div>
             </div>
-
-            <button class="cta-primary" onclick="iniciarTest()">
-                COMENZAR TEST GRATUITO
-            </button>
 
             <div class="trust-badges">
                 <div class="trust-badge">
@@ -653,7 +661,7 @@
             </div>
 
             <div class="progress-text" id="progressText">
-                Pregunta 1 de 28
+                Pregunta 1 de 10
             </div>
 
             <div class="question-card" id="questionCard">
@@ -689,11 +697,12 @@
             <div class="icon-success">✓</div>
             <h2>¡Test completado!</h2>
             <div class="score" id="scoreDisplay">-- puntos</div>
+            <div class="score-details" id="scoreDetails"></div>
 
             <p>
-                Has respondido las 28 preguntas del test. Tu análisis se ha
-                calculado con base en tu puntuación total y en criterios
-                utilizados para evaluar relaciones con rasgos narcisistas.
+                Has respondido todas las preguntas del test. Tu resultado se ha
+                calculado con base en tu puntuación total y en indicadores
+                frecuentes en relaciones con rasgos narcisistas.
             </p>
 
             <p>
@@ -737,264 +746,122 @@
 
     <script>
         /* HOTMART URL */
-        const HOTMART_CHECKOUT_URL = "https://pay.hotmart.com/TU_CODIGO_AQUI";
+        const HOTMART_CHECKOUT_URL = "https://pay.hotmart.com/Y103241858C?off=fcux0w8d&checkoutMode=10";
         document.getElementById("hotmartCheckoutLink").href = HOTMART_CHECKOUT_URL;
 
         /* =======================
-            PREGUNTAS DEL TEST
+            PREGUNTAS DEL TEST (10)
         ======================= */
         const preguntas = [
-            { numero: 1, texto: "Al inicio, ¿tu pareja te llenaba de mensajes, halagos y atención casi todo el tiempo?",
-              opciones: [
-                  { texto: "Nunca o casi nunca", valor: 1 },
-                  { texto: "Pocas veces", valor: 2 },
-                  { texto: "A veces", valor: 3 },
-                  { texto: "Muchas veces", valor: 4 },
-                  { texto: "Casi siempre / siempre", valor: 5 }
-              ]
+            {
+                numero: 1,
+                texto: "Al inicio, ¿tu pareja te llenaba de mensajes, halagos y atención casi todo el tiempo?",
+                opciones: [
+                    { texto: "Nunca o casi nunca", valor: 1 },
+                    { texto: "Pocas veces", valor: 2 },
+                    { texto: "A veces", valor: 3 },
+                    { texto: "Muchas veces", valor: 4 },
+                    { texto: "Casi siempre / siempre", valor: 5 }
+                ]
             },
-            { numero: 2, texto: "¿La relación fue muy rápida? (decir “te amo”, hablar de vivir juntos o futuro en pocas semanas)",
-              opciones: [
-                  { texto: "No, fue más bien lenta", valor: 1 },
-                  { texto: "Un poco rápida", valor: 2 },
-                  { texto: "Bastante rápida", valor: 3 },
-                  { texto: "Muy rápida", valor: 4 },
-                  { texto: "Demasiado rápida, casi sin pensar", valor: 5 }
-              ]
+            {
+                numero: 2,
+                texto: "¿Alguna vez te hizo dudar de lo que viste, escuchaste o recordabas?",
+                opciones: [
+                    { texto: "Nunca o casi nunca", valor: 1 },
+                    { texto: "Pocas veces", valor: 2 },
+                    { texto: "A veces", valor: 3 },
+                    { texto: "Muchas veces", valor: 4 },
+                    { texto: "Casi siempre / siempre", valor: 5 }
+                ]
             },
-            { numero: 3, texto: "¿Alguna vez te hizo dudar de lo que viste, escuchaste o recordabas?",
-              opciones: [
-                  { texto: "Nunca", valor: 1 },
-                  { texto: "Pocas veces", valor: 2 },
-                  { texto: "A veces", valor: 3 },
-                  { texto: "Muchas veces", valor: 4 },
-                  { texto: "Casi siempre / siempre", valor: 5 }
-              ]
+            {
+                numero: 3,
+                texto: "Cuando le contabas cómo te sentías, ¿te decía que exagerabas, eras dramática/o o que estabas loca/o?",
+                opciones: [
+                    { texto: "Nunca o casi nunca", valor: 1 },
+                    { texto: "Pocas veces", valor: 2 },
+                    { texto: "A veces", valor: 3 },
+                    { texto: "Muchas veces", valor: 4 },
+                    { texto: "Casi siempre / siempre", valor: 5 }
+                ]
             },
-            { numero: 4, texto: "Cuando le contabas cómo te sentías, ¿te decía que exagerabas, eras dramática/o o que estabas loca/o?",
-              opciones: [
-                  { texto: "Nunca", valor: 1 },
-                  { texto: "Pocas veces", valor: 2 },
-                  { texto: "A veces", valor: 3 },
-                  { texto: "Muchas veces", valor: 4 },
-                  { texto: "Casi siempre / siempre", valor: 5 }
-              ]
+            {
+                numero: 4,
+                texto: "Después de la etapa bonita del inicio, ¿empezó a criticarte o tratarte peor poco a poco?",
+                opciones: [
+                    { texto: "No, se mantuvo igual", valor: 1 },
+                    { texto: "Un poco", valor: 2 },
+                    { texto: "Bastante", valor: 3 },
+                    { texto: "Mucho", valor: 4 },
+                    { texto: "Muchísimo, fue un cambio total", valor: 5 }
+                ]
             },
-            { numero: 5, texto: "Después de la etapa bonita del inicio, ¿empezó a criticarte o tratarte peor poco a poco?",
-              opciones: [
-                  { texto: "No, se mantuvo igual", valor: 1 },
-                  { texto: "Un poco", valor: 2 },
-                  { texto: "Bastante", valor: 3 },
-                  { texto: "Mucho", valor: 4 },
-                  { texto: "Muchísimo, fue un cambio total", valor: 5 }
-              ]
+            {
+                numero: 5,
+                texto: "¿Sentías que tenías que tener mucho cuidado con lo que decías o hacías para que no se enojara?",
+                opciones: [
+                    { texto: "Nunca o casi nunca", valor: 1 },
+                    { texto: "Pocas veces", valor: 2 },
+                    { texto: "A veces", valor: 3 },
+                    { texto: "Muchas veces", valor: 4 },
+                    { texto: "Casi siempre / siempre", valor: 5 }
+                ]
             },
-            { numero: 6, texto: "¿Sentías que tenías que tener mucho cuidado con lo que decías o hacías para que no se enojara?",
-              opciones: [
-                  { texto: "No, me sentía tranquila/o", valor: 1 },
-                  { texto: "Pocas veces", valor: 2 },
-                  { texto: "A veces", valor: 3 },
-                  { texto: "Muchas veces", valor: 4 },
-                  { texto: "Todo el tiempo", valor: 5 }
-              ]
+            {
+                numero: 6,
+                texto: "¿Te daba la sensación de que a tu pareja no le importaban realmente tus sentimientos o problemas?",
+                opciones: [
+                    { texto: "No, sí le importaban", valor: 1 },
+                    { texto: "Le importaban un poco menos de lo que esperabas", valor: 2 },
+                    { texto: "Casi no le importaban", valor: 3 },
+                    { texto: "Muy poco le importaban", valor: 4 },
+                    { texto: "Nada le importaban", valor: 5 }
+                ]
             },
-            { numero: 7, texto: "¿Te daba la sensación de que a tu pareja no le importaban realmente tus sentimientos o problemas?",
-              opciones: [
-                  { texto: "Sí le importaban", valor: 1 },
-                  { texto: "Le importaban un poco menos de lo esperado", valor: 2 },
-                  { texto: "Casi no le importaban", valor: 3 },
-                  { texto: "Muy poco le importaban", valor: 4 },
-                  { texto: "Nada le importaban", valor: 5 }
-              ]
+            {
+                numero: 7,
+                texto: "¿Quería controlar cosas de tu vida (cómo te vestías, con quién hablabas, tus redes, dinero o tiempo)?",
+                opciones: [
+                    { texto: "No, respetaba mi espacio", valor: 1 },
+                    { texto: "Un poco controlador/a", valor: 2 },
+                    { texto: "Bastante controlador/a", valor: 3 },
+                    { texto: "Muy controlador/a", valor: 4 },
+                    { texto: "Control total casi en todo", valor: 5 }
+                ]
             },
-            { numero: 8, texto: "¿Hacía cosas con otras personas (mensajes, likes, coqueteos) para darte celos o hacerte sentir insegura/o?",
-              opciones: [
-                  { texto: "Nunca", valor: 1 },
-                  { texto: "Pocas veces", valor: 2 },
-                  { texto: "A veces", valor: 3 },
-                  { texto: "Muchas veces", valor: 4 },
-                  { texto: "Casi siempre / siempre", valor: 5 }
-              ]
+            {
+                numero: 8,
+                texto: "¿Te fue alejando de amigas/os, familia u otras personas importantes para ti?",
+                opciones: [
+                    { texto: "No, apoyaba mis relaciones", valor: 1 },
+                    { texto: "Un poco", valor: 2 },
+                    { texto: "Bastante", valor: 3 },
+                    { texto: "Mucho", valor: 4 },
+                    { texto: "Demasiado, casi me quedé sola/o", valor: 5 }
+                ]
             },
-            { numero: 9, texto: "¿Te fue alejando de amigas/os, familia u otras personas importantes para ti?",
-              opciones: [
-                  { texto: "No, apoyaba mis relaciones", valor: 1 },
-                  { texto: "Un poco", valor: 2 },
-                  { texto: "Bastante", valor: 3 },
-                  { texto: "Mucho", valor: 4 },
-                  { texto: "Demasiado, casi me quedé sola/o", valor: 5 }
-              ]
+            {
+                numero: 9,
+                texto: "¿Notabas ciclos donde a veces era encantador/a y luego frío/a, cruel o distante sin motivo claro?",
+                opciones: [
+                    { texto: "No, era bastante estable", valor: 1 },
+                    { texto: "Un poco cambiante", valor: 2 },
+                    { texto: "Bastante cambiante", valor: 3 },
+                    { texto: "Muy cambiante", valor: 4 },
+                    { texto: "Extremadamente cambiante, de amor a desprecio", valor: 5 }
+                ]
             },
-            { numero: 10, texto: "¿Quería controlar cosas de tu vida (cómo te vestías, con quién hablabas, tus redes, dinero, tiempo)?",
-              opciones: [
-                  { texto: "No, respetaba mi espacio", valor: 1 },
-                  { texto: "Un poco controlador/a", valor: 2 },
-                  { texto: "Bastante controlador/a", valor: 3 },
-                  { texto: "Muy controlador/a", valor: 4 },
-                  { texto: "Control total", valor: 5 }
-              ]
-            },
-            { numero: 11, texto: "Cuando hacía algo mal, ¿reconocía sus errores o siempre culpaba a los demás (incluyéndote a ti)?",
-              opciones: [
-                  { texto: "Sí reconocía errores", valor: 1 },
-                  { texto: "A veces sí, a veces no", valor: 2 },
-                  { texto: "Pocas veces", valor: 3 },
-                  { texto: "Casi nunca", valor: 4 },
-                  { texto: "Nunca, siempre culpaba a otros", valor: 5 }
-              ]
-            },
-            { numero: 12, texto: "¿Te pedía cosas que él/ella no hacía? (ej: te exigía fidelidad pero no era fiel)",
-              opciones: [
-                  { texto: "No, era coherente", valor: 1 },
-                  { texto: "Pocas veces", valor: 2 },
-                  { texto: "A veces", valor: 3 },
-                  { texto: "Muchas veces", valor: 4 },
-                  { texto: "Casi siempre / siempre", valor: 5 }
-              ]
-            },
-            { numero: 13, texto: "¿Usaba el silencio, amenazas, victimizarse o desaparecer para manipularte?",
-              opciones: [
-                  { texto: "Nunca", valor: 1 },
-                  { texto: "Pocas veces", valor: 2 },
-                  { texto: "A veces", valor: 3 },
-                  { texto: "Muchas veces", valor: 4 },
-                  { texto: "Casi siempre / siempre", valor: 5 }
-              ]
-            },
-            { numero: 14, texto: "¿Se sentía superior a los demás y creía que merecía trato especial?",
-              opciones: [
-                  { texto: "No, era humilde", valor: 1 },
-                  { texto: "Un poco", valor: 2 },
-                  { texto: "Bastante", valor: 3 },
-                  { texto: "Mucho", valor: 4 },
-                  { texto: "Muchísimo", valor: 5 }
-              ]
-            },
-            { numero: 15, texto: "Cuando te iba bien en algo, ¿lo celebraba contigo o lo minimizaba?",
-              opciones: [
-                  { texto: "Celebraba contigo", valor: 1 },
-                  { texto: "A veces sí, a veces no", valor: 2 },
-                  { texto: "Lo celebraba poco", valor: 3 },
-                  { texto: "Casi siempre lo minimizaba", valor: 4 },
-                  { texto: "Siempre lo minimizaba", valor: 5 }
-              ]
-            },
-            { numero: 16, texto: "¿Notabas ciclos donde a veces era encantador/a y luego frío/a o cruel?",
-              opciones: [
-                  { texto: "No, era estable", valor: 1 },
-                  { texto: "Un poco cambiante", valor: 2 },
-                  { texto: "Bastante cambiante", valor: 3 },
-                  { texto: "Muy cambiante", valor: 4 },
-                  { texto: "Extremadamente cambiante", valor: 5 }
-              ]
-            },
-            { numero: 17, texto: "¿Sentías que te usaba para conseguir cosas (dinero, atención, casa, sexo, etc.)?",
-              opciones: [
-                  { texto: "No, había reciprocidad", valor: 1 },
-                  { texto: "Un poco", valor: 2 },
-                  { texto: "Bastante", valor: 3 },
-                  { texto: "Mucho", valor: 4 },
-                  { texto: "Muchísimo", valor: 5 }
-              ]
-            },
-            { numero: 18, texto: "¿Te acusaba de cosas que él/ella hacía?",
-              opciones: [
-                  { texto: "Nunca", valor: 1 },
-                  { texto: "Pocas veces", valor: 2 },
-                  { texto: "A veces", valor: 3 },
-                  { texto: "Muchas veces", valor: 4 },
-                  { texto: "Casi siempre / siempre", valor: 5 }
-              ]
-            },
-            { numero: 19, texto: "¿Se ponía a la defensiva cuando le señalabas algo que te dolía?",
-              opciones: [
-                  { texto: "Podíamos hablar bien", valor: 1 },
-                  { texto: "A veces sí, a veces no", valor: 2 },
-                  { texto: "Casi siempre se defendía", valor: 3 },
-                  { texto: "Muy a la defensiva", valor: 4 },
-                  { texto: "Imposible hablar con él/ella", valor: 5 }
-              ]
-            },
-            { numero: 20, texto: "¿Sentías que tú estabas pendiente de sus necesidades pero él/ella no de las tuyas?",
-              opciones: [
-                  { texto: "Había equilibrio", valor: 1 },
-                  { texto: "Un poco desequilibrado", valor: 2 },
-                  { texto: "Bastante desequilibrado", valor: 3 },
-                  { texto: "Muy desequilibrado", valor: 4 },
-                  { texto: "Solo importaban sus necesidades", valor: 5 }
-              ]
-            },
-            { numero: 21, texto: "Cuando intentaste alejarte, ¿volvía con promesas de cambiar que luego no cumplía?",
-              opciones: [
-                  { texto: "No aplica", valor: 1 },
-                  { texto: "Una vez", valor: 2 },
-                  { texto: "Dos veces", valor: 3 },
-                  { texto: "Varias veces", valor: 4 },
-                  { texto: "Muchísimas veces", valor: 5 }
-              ]
-            },
-            { numero: 22, texto: "¿Tu autoestima bajó durante la relación?",
-              opciones: [
-                  { texto: "No", valor: 1 },
-                  { texto: "Un poco", valor: 2 },
-                  { texto: "Bastante", valor: 3 },
-                  { texto: "Mucho", valor: 4 },
-                  { texto: "Drásticamente", valor: 5 }
-              ]
-            },
-            { numero: 23, texto: "¿Te sentías confundida/o o dudando de ti misma/o con frecuencia?",
-              opciones: [
-                  { texto: "No", valor: 1 },
-                  { texto: "Pocas veces", valor: 2 },
-                  { texto: "A veces", valor: 3 },
-                  { texto: "Muchas veces", valor: 4 },
-                  { texto: "Casi todo el tiempo", valor: 5 }
-              ]
-            },
-            { numero: 24, texto: "¿Sentiste ansiedad o tristeza fuerte por la relación?",
-              opciones: [
-                  { texto: "No", valor: 1 },
-                  { texto: "Un poco", valor: 2 },
-                  { texto: "Bastante", valor: 3 },
-                  { texto: "Mucho", valor: 4 },
-                  { texto: "Muchísimo", valor: 5 }
-              ]
-            },
-            { numero: 25, texto: "¿Sentiste que te perdiste a ti misma/o?",
-              opciones: [
-                  { texto: "No", valor: 1 },
-                  { texto: "Un poco", valor: 2 },
-                  { texto: "Bastante", valor: 3 },
-                  { texto: "Mucho", valor: 4 },
-                  { texto: "Totalmente", valor: 5 }
-              ]
-            },
-            { numero: 26, texto: "¿Se te hizo muy difícil terminar o alejarte aunque no eras feliz?",
-              opciones: [
-                  { texto: "No, fue fácil", valor: 1 },
-                  { texto: "Un poco difícil", valor: 2 },
-                  { texto: "Bastante difícil", valor: 3 },
-                  { texto: "Muy difícil", valor: 4 },
-                  { texto: "Extremadamente difícil", valor: 5 }
-              ]
-            },
-            { numero: 27, texto: "¿Sentías en tu intuición que algo estaba mal aunque no supieras explicarlo?",
-              opciones: [
-                  { texto: "No", valor: 1 },
-                  { texto: "Pocas veces", valor: 2 },
-                  { texto: "A veces", valor: 3 },
-                  { texto: "Muchas veces", valor: 4 },
-                  { texto: "Casi todo el tiempo", valor: 5 }
-              ]
-            },
-            { numero: 28, texto: "¿Personas cercanas te dijeron que les preocupaba cómo te trataba tu pareja?",
-              opciones: [
-                  { texto: "No", valor: 1 },
-                  { texto: "Una persona", valor: 2 },
-                  { texto: "Dos personas", valor: 3 },
-                  { texto: "Varias personas", valor: 4 },
-                  { texto: "Muchas personas", valor: 5 }
-              ]
+            {
+                numero: 10,
+                texto: "Aunque eras infeliz, ¿se te hacía muy difícil terminar o alejarte de esa relación?",
+                opciones: [
+                    { texto: "No, pude salir fácil", valor: 1 },
+                    { texto: "Un poco difícil", valor: 2 },
+                    { texto: "Bastante difícil", valor: 3 },
+                    { texto: "Muy difícil", valor: 4 },
+                    { texto: "Extremadamente difícil", valor: 5 }
+                ]
             }
         ];
 
@@ -1042,23 +909,23 @@
             document.getElementById("btnNext").disabled = respuestas[preguntaActual] === null;
         }
 
-function seleccionarOpcion(valor) {
-    respuestas[preguntaActual] = valor;
-    mostrarPregunta();
+        function seleccionarOpcion(valor) {
+            respuestas[preguntaActual] = valor;
+            mostrarPregunta();
 
-    // En móviles, baja automáticamente hasta los botones
-    if (window.innerWidth <= 768) {
-        setTimeout(() => {
-            const nextBtn = document.getElementById("btnNext");
-            if (nextBtn) {
-                nextBtn.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
+            // En móviles, bajar hacia los botones
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    const nextBtn = document.getElementById("btnNext");
+                    if (nextBtn) {
+                        nextBtn.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center"
+                        });
+                    }
+                }, 80);
             }
-        }, 80);
-    }
-}
+        }
 
         function siguientePregunta() {
             if (respuestas[preguntaActual] === null) return;
@@ -1082,16 +949,36 @@ function seleccionarOpcion(valor) {
 
         function finalizarTest() {
             const puntuacionTotal = respuestas.reduce((sum, val) => sum + val, 0);
+            const maximo = preguntas.length * 5; // 50
+
+            let categoria = "";
+            let explicacion = "";
+
+            if (puntuacionTotal <= 20) {
+                categoria = "Riesgo bajo de dinámicas típicas de abuso narcisista.";
+                explicacion =
+                    "Tu resultado sugiere que, aunque puede haber habido momentos difíciles o conductas puntuales, no se observa un patrón constante típico de abuso narcisista. Aun así, tus emociones y tu experiencia son importantes y merecen ser escuchadas.";
+            } else if (puntuacionTotal <= 35) {
+                categoria = "Riesgo moderado de dinámicas de abuso narcisista.";
+                explicacion =
+                    "Tu resultado indica que hay varias señales de manipulación emocional o dinámicas poco sanas que podrían estar afectando tu bienestar. Profundizar en estas experiencias puede ayudarte a ponerles nombre y a tomar decisiones más conscientes.";
+            } else {
+                categoria = "Riesgo alto de dinámicas compatibles con abuso narcisista.";
+                explicacion =
+                    "Tu resultado muestra un patrón fuerte de comportamientos que suelen aparecer en relaciones con abuso narcisista. Es importante validar lo que has vivido, entenderlo con claridad y considerar apoyo emocional especializado.";
+            }
 
             localStorage.setItem("testScore", puntuacionTotal);
             localStorage.setItem("testAnswers", JSON.stringify(respuestas));
 
             document.getElementById("testSection").style.display = "none";
             document.getElementById("paymentSection").style.display = "flex";
-            document.getElementById("scoreDisplay").textContent = `${puntuacionTotal} puntos`;
+            document.getElementById("scoreDisplay").textContent =
+                `${puntuacionTotal} puntos de ${maximo}`;
+            document.getElementById("scoreDetails").innerHTML =
+                `<strong>${categoria}</strong><br>${explicacion}`;
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
     </script>
 </body>
 </html>
-
